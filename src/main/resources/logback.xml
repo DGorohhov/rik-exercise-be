@@ -1,0 +1,16 @@
+<configuration>
+
+    <variable name="LOG_LEVEL" value="${LOG_LEVEL:-DEBUG}" />
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%cyan(%date{ISO8601}) %gray([rik-exercise-be]) [correlationId: %X{correlationId}] %highlight(%-5level) %magenta(%logger{36}) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="eu.gordaniil.rik-exercise-be" level="${LOG_LEVEL}"/>
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
