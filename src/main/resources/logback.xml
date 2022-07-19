@@ -8,7 +8,7 @@
         </encoder>
     </appender>
 
-    <logger name="eu.gordaniil.rik-exercise-be" level="${LOG_LEVEL}"/>
+    <logger name="eu.gordaniil.rikexercisebe" level="${LOG_LEVEL}"/>
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
     </root>
