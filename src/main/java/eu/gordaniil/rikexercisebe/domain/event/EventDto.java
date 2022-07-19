@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDateTime;
 
@@ -22,6 +23,7 @@ public class EventDto extends BaseDto {
 
     private String location;
 
-    private String additionalInfo; // TODO: max is 1000
+    @Length(max = 1000, message = "'additionalInfo' should not contain more that 1500 characters")
+    private String additionalInfo;
 
 }

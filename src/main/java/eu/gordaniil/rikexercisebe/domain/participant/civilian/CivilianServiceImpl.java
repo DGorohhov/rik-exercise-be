@@ -1,4 +1,4 @@
-package eu.gordaniil.rikexercisebe.domain.participant;
+package eu.gordaniil.rikexercisebe.domain.participant.civilian;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,21 +9,21 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class ParticipantServiceImpl implements ParticipantService {
+public class CivilianServiceImpl implements CivilianService {
 
     @Transactional(readOnly = true)
     @Override
-    public ParticipantDto getBy(String extId) {
+    public CivilianDto getBy(String extId) {
         return null;
     }
 
     @Override
-    public ParticipantDto save(ParticipantDto dto) {
+    public CivilianDto save(CivilianDto dto) {
         return null;
     }
 
     @Override
-    public ParticipantDto edit(ParticipantDto dto) {
+    public CivilianDto edit(CivilianDto dto) {
         return null;
     }
 

@@ -1,8 +1,8 @@
-package eu.gordaniil.rikexercisebe.controller.participant;
+package eu.gordaniil.rikexercisebe.controller.participant.company;
 
 import eu.gordaniil.rikexercisebe.controller.BaseController;
-import eu.gordaniil.rikexercisebe.domain.participant.ParticipantDto;
-import eu.gordaniil.rikexercisebe.domain.participant.ParticipantService;
+import eu.gordaniil.rikexercisebe.domain.participant.company.CompanyDto;
+import eu.gordaniil.rikexercisebe.domain.participant.company.CompanyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -10,26 +10,23 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("rest/v1/participants")
-public class ParticipantController implements BaseController<ParticipantDto> {
+@RequestMapping("rest/v1/participant/companies")
+public class CompanyController implements BaseController<CompanyDto> {
 
-    private final ParticipantService service;
+    private final CompanyService service;
 
-    @GetMapping("/{extId}")
     @Override
-    public ParticipantDto getBy(@PathVariable String extId) {
+    public CompanyDto getBy(@PathVariable String extId) {
         return service.getBy(extId);
     }
 
-    @PostMapping
     @Override
-    public ParticipantDto create(@Validated @RequestBody ParticipantDto dto) {
+    public CompanyDto create(@Validated @RequestBody CompanyDto dto) {
         return service.save(dto);
     }
 
-    @PutMapping
     @Override
-    public ParticipantDto edit(@Validated @RequestBody ParticipantDto dto) {
+    public CompanyDto edit(@Validated @RequestBody CompanyDto dto) {
         return service.edit(dto);
     }
 

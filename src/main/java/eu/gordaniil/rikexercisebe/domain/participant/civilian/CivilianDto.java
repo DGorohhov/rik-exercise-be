@@ -1,4 +1,4 @@
-package eu.gordaniil.rikexercisebe.domain.participant;
+package eu.gordaniil.rikexercisebe.domain.participant.civilian;
 
 import eu.gordaniil.rikexercisebe.domain.BaseDto;
 import lombok.AllArgsConstructor;
@@ -6,18 +6,14 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-
-import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ParticipantDto extends BaseDto {
-
-    @NotNull(message = "'type' cannot be empty or null")
-    private ParticipantTypes type;
+public class CivilianDto extends BaseDto {
 
     private String firstName;
 
@@ -27,6 +23,7 @@ public class ParticipantDto extends BaseDto {
 
     private String paymentType; // TODO: CHECK WHETHER THIS SHOULD NOT BE AN 'enum'
 
+    @Length(max = 1500, message = "'additionalInfo' should not contain more that 1500 characters")
     private String additionalInfo;
 
     // TODO: make assertTrue additional info length depending on the 'type'.
