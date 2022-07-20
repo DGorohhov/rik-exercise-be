@@ -15,16 +15,19 @@ public class CompanyController implements BaseController<CompanyDto> {
 
     private final CompanyService service;
 
+    @GetMapping("/{extId}")
     @Override
     public CompanyDto getBy(@PathVariable String extId) {
         return service.getBy(extId);
     }
 
+    @PostMapping
     @Override
     public CompanyDto create(@Validated @RequestBody CompanyDto dto) {
         return service.save(dto);
     }
 
+    @PutMapping
     @Override
     public CompanyDto edit(@Validated @RequestBody CompanyDto dto) {
         return service.edit(dto);

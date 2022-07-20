@@ -1,5 +1,6 @@
 package eu.gordaniil.rikexercisebe.domain.event;
 
+import eu.gordaniil.rikexercisebe.domain.participant.dto.EventVm;
 import org.mapstruct.*;
 
 @Mapper
@@ -20,5 +21,7 @@ public interface EventMapper {
             @MappingTarget EventDao dao,
             EventDto dto
     );
+
+    EventVm toVm(EventDao dao);
 
 }

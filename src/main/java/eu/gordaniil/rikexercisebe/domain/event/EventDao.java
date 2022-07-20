@@ -13,6 +13,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -64,7 +65,7 @@ public class EventDao extends BaseDao implements Serializable {
                 @JoinColumn(name = "civilian_id", referencedColumnName = "ext_id")
             }
     )
-    private Set<CivilianDao> civilianParticipants;
+    private Set<CivilianDao> civilianParticipants = new HashSet<CivilianDao>();
 
     @ManyToMany(
             fetch = FetchType.LAZY,
@@ -82,6 +83,6 @@ public class EventDao extends BaseDao implements Serializable {
                     @JoinColumn(name = "company_id", referencedColumnName = "ext_id")
             }
     )
-    private Set<CompanyDao> companyParticipants;
+    private Set<CompanyDao> companyParticipants = new HashSet<CompanyDao>();
 
 }
