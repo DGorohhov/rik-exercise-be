@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @Slf4j
@@ -213,8 +214,13 @@ public class EventServiceImpl implements EventService {
                 );
 
         // TODO: sort participants by the ID???
+        eventVm.setIsEndedEvent(isPast(eventVm.getDate()));
 
         return eventVm;
+    }
+
+    private boolean isPast(LocalDateTime eventDate) {
+        return LocalDateTime.now().isAfter(eventDate);
     }
 
 }

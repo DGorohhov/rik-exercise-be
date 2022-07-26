@@ -1,6 +1,7 @@
 package eu.gordaniil.rikexercisebe.domain.participant.company;
 
 import eu.gordaniil.rikexercisebe.domain.BaseDto;
+import eu.gordaniil.rikexercisebe.validation.ValidationConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -10,6 +11,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -22,6 +24,7 @@ public class CompanyDto extends BaseDto {
     private String legalName;
 
     @NotEmpty(message = "'registerCode' cannot be null or empty")
+    @Pattern(regexp = ValidationConstraint.COMPANY_REGISTER_CODE_REGEXP, message = "'registerCode' must be a 8 characters long numeric string")
     private String registerCode;
 
     @NotNull(message = "'numberOfParticipants' cannot be null or empty")

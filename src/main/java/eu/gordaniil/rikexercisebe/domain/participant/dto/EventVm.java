@@ -16,6 +16,8 @@ import java.util.List;
 @NoArgsConstructor
 public class EventVm extends EventDto {
 
+    private Boolean isEndedEvent;
+
     private List<EventParticipantPreviewVm> participants;
 
 }

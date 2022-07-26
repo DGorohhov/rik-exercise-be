@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -19,10 +20,22 @@ public class EventListServiceImpl implements EventListService {
     private final EventPreviewRepository repository;
 
     @Override
-    public PaginatedListResponse<EventPreviewVm> getAll(Integer page, Integer limit) {
-        log.debug("DB: Retrieving all events");
+    public PaginatedListResponse<EventPreviewVm> getUpcoming(Integer page, Integer limit) {
+        log.debug("DB: Retrieving all upcoming events");
 
-        var result = repository.findAll(PageRequest.of(page, limit));
+        var result = repository.findAllByDateAfter(PageRequest.of(page, limit), LocalDateTime.now());
+        var items = result.getContent().stream()
+                .map(mapper::toVm)
+                .collect(Collectors.toSet());
+
+        return new PaginatedListResponse<>(items, result.getTotalElements());
+    }
+
+    @Override
+    public PaginatedListResponse<EventPreviewVm> getEnded(Integer page, Integer limit) {
+        log.debug("DB: Retrieving all ended events");
+
+        var result = repository.findAllByDateBefore(PageRequest.of(page, limit), LocalDateTime.now());
         var items = result.getContent().stream()
                 .map(mapper::toVm)
                 .collect(Collectors.toSet());

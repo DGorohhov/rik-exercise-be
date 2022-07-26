@@ -24,7 +24,7 @@ public class EventController implements BaseController<EventDto> {
     }
 
     @GetMapping("/{extId}/info")
-    public EventDto getInfoBy(@PathVariable String extId) {
+    public EventVm getInfoBy(@PathVariable String extId) {
         return service.getEventInfo(extId);
     }
 

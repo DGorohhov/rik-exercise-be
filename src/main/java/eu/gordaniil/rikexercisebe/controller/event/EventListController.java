@@ -16,12 +16,20 @@ public class EventListController {
 
     private final EventListService service;
 
-    @GetMapping("/all")
-    public PaginatedListResponse<EventPreviewVm> getAll(
+    @GetMapping("/upcoming")
+    public PaginatedListResponse<EventPreviewVm> getUpcoming(
             @RequestParam(value = "page", defaultValue = "0") Integer page,
             @RequestParam(value = "limit", defaultValue = "10") Integer limit
     ) {
-        return service.getAll(page, limit);
+        return service.getUpcoming(page, limit);
+    }
+
+    @GetMapping("/ended")
+    public PaginatedListResponse<EventPreviewVm> getEnded(
+            @RequestParam(value = "page", defaultValue = "0") Integer page,
+            @RequestParam(value = "limit", defaultValue = "10") Integer limit
+    ) {
+        return service.getEnded(page, limit);
     }
 
 }
