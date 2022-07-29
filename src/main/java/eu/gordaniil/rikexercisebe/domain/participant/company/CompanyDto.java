@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -28,6 +29,7 @@ public class CompanyDto extends BaseDto {
     private String registerCode;
 
     @NotNull(message = "'numberOfParticipants' cannot be null or empty")
+    @Min(1)
     private Integer numberOfParticipants;
 
     @NotEmpty(message = "'paymentType' cannot be null or empty")
