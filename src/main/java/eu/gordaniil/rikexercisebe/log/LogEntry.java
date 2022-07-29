@@ -15,14 +15,12 @@ import java.util.Optional;
 public class LogEntry {
 
     private static final String EMPTY = "-";
-    private static final String FORMAT = "IP({0}), CORRELATIONID({1}), URL({2}), CONSUMERID({3}), HTTPSTATUS({4}), XREQUESTID({5})";
+    private static final String FORMAT = "IP({0}), CORRELATIONID({1}), URL({2}), HTTPSTATUS({4})";
 
     private String ip;
     private String correlationId;
     private String url;
-    private String consumerId;
     private String status;
-    private String xRequestId;
 
     @Override
     public String toString() {
@@ -31,9 +29,7 @@ public class LogEntry {
                 getIp().orElse(EMPTY),
                 getCorrelationId().orElse(EMPTY),
                 getUrl().orElse(EMPTY),
-                getConsumerId().orElse(EMPTY),
-                getStatus().orElse(EMPTY),
-                getXRequestId().orElse(EMPTY)
+                getStatus().orElse(EMPTY)
         );
     }
 
@@ -49,16 +45,8 @@ public class LogEntry {
         return Optional.ofNullable(url);
     }
 
-    private Optional<String> getConsumerId() {
-        return Optional.ofNullable(consumerId);
-    }
-
     private Optional<String> getStatus() {
         return Optional.ofNullable(status);
-    }
-
-    private Optional<String> getXRequestId() {
-        return Optional.ofNullable(xRequestId);
     }
 
 }

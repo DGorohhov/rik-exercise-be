@@ -50,13 +50,10 @@ public class RestLoggingAspect {
     private LogEntry getNewData() {
         var request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
 
-        var xRequestId = Optional.ofNullable(request.getHeader(X_REQUEST_ID));
-
         return LogEntry.builder()
                 .ip(request.getRemoteHost())
                 .correlationId(CorrelationIdHelper.correlationId())
                 .url(request.getRequestURI())
-                .xRequestId(xRequestId.orElse("-"))
                 .build();
     }
 
